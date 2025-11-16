@@ -1,0 +1,68 @@
+# DFG Subject Area Classifier Configuration
+
+# Model Configuration
+model:
+  name: "allenai/scibert_scivocab_uncased"
+  max_sequence_length: 512
+  num_classes: 30  # Level 2 subject areas (will be updated based on actual data)
+  dropout_rate: 0.3
+  freeze_bert: false
+  hierarchical: false
+
+# Training Configuration
+training:
+  learning_rate: 0.00002  # 2e-5
+  batch_size: 8
+  num_epochs: 3
+  warmup_steps: 100
+  weight_decay: 0.01
+  gradient_accumulation_steps: 1
+  max_grad_norm: 1.0
+  early_stopping_patience: 3
+  save_best_model: true
+
+# Data Configuration
+data:
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  random_seed: 42
+  max_samples_per_class: null  # null means no limit
+
+# Paths
+paths:
+  data_dir: "data/"
+  raw_data_dir: "data/raw/"
+  processed_data_dir: "data/processed/"
+  model_dir: "models/"
+  checkpoint_dir: "models/checkpoints/"
+  cache_dir: "models/scibert/"
+  output_dir: "outputs/"
+
+# Logging and Monitoring
+logging:
+  level: "INFO"
+  log_file: "training.log"
+  wandb_project: "dfg-classifier"
+  wandb_entity: null
+  save_predictions: true
+
+# Hardware Configuration
+device:
+  use_cuda: true
+  num_workers: 4
+  pin_memory: true
+
+# Evaluation Configuration
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1", "confusion_matrix"]
+  save_predictions: true
+  detailed_report: true
+
+# Inference Configuration
+inference:
+  batch_size: 16
+  return_probabilities: true
+  return_attention_weights: false
+  output_format: "json"
+

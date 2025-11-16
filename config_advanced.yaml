@@ -1,0 +1,225 @@
+# Advanced DFG Subject Area Classifier Configuration
+# Optimized for high accuracy and robust performance
+
+# Model Configuration
+model:
+  name: "allenai/scibert_scivocab_uncased"
+  max_sequence_length: 512
+  num_classes: 30  # Level 2 subject areas
+  dropout_rate: 0.1  # Lower dropout for better performance
+  freeze_bert: false
+  hierarchical: false  # Set to true for multi-level classification
+
+# Training Configuration - Optimized for Performance
+training:
+  # Learning rate with warmup
+  learning_rate: 2e-5  # Optimal for SciBERT fine-tuning
+  min_learning_rate: 1e-7  # For cosine schedule
+  
+  # Batch sizes
+  batch_size: 16  # Increased for better gradient estimates
+  eval_batch_size: 32  # Larger for faster evaluation
+  
+  # Training duration
+  num_epochs: 10  # More epochs for better convergence
+  max_steps: -1  # -1 means train for full epochs
+  
+  # Optimizer settings
+  weight_decay: 0.01
+  adam_epsilon: 1e-8
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  
+  # Learning rate schedule
+  warmup_ratio: 0.1  # 10% of total steps for warmup
+  warmup_steps: 500  # Alternative to warmup_ratio
+  lr_scheduler_type: "cosine"  # cosine, linear, constant
+  
+  # Gradient settings
+  gradient_accumulation_steps: 2  # Effective batch size = 16 * 2 = 32
+  max_grad_norm: 1.0  # Gradient clipping
+  
+  # Regularization
+  label_smoothing: 0.1  # Label smoothing for better calibration
+  
+  # Early stopping
+  early_stopping_patience: 5  # Increased patience
+  early_stopping_threshold: 0.001
+  
+  # Model saving
+  save_best_model: true
+  save_total_limit: 3  # Keep only 3 best checkpoints
+  save_steps: 500  # Save checkpoint every N steps
+  
+  # Evaluation
+  eval_steps: 100  # Evaluate every N steps
+  logging_steps: 50  # Log metrics every N steps
+
+# Data Configuration
+data:
+  # Dataset splits
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  random_seed: 42
+  
+  # Data augmentation
+  use_augmentation: true
+  augmentation_prob: 0.3
+  augmentation_factor: 2
+  
+  # Class balancing
+  balance_classes: true
+  balancing_strategy: "oversample"  # oversample, undersample, weighted
+  
+  # Sampling
+  max_samples_per_class: null  # null means no limit
+  min_samples_per_class: 50  # Minimum samples required per class
+
+# Paths
+paths:
+  data_dir: "dfg-classifier/data/"
+  raw_data_dir: "dfg-classifier/data/raw/"
+  processed_data_dir: "dfg-classifier/data/processed/"
+  model_dir: "dfg-classifier/models/"
+  checkpoint_dir: "dfg-classifier/models/checkpoints/"
+  cache_dir: "dfg-classifier/models/scibert/"
+  output_dir: "dfg-classifier/outputs/"
+  logs_dir: "dfg-classifier/logs/"
+
+# Logging and Monitoring
+logging:
+  level: "INFO"
+  log_file: "dfg-classifier/logs/training.log"
+  console_log: true
+  file_log: true
+  
+  # Weights & Biases (optional)
+  use_wandb: false
+  wandb_project: "dfg-classifier"
+  wandb_entity: null
+  wandb_run_name: null  # Auto-generate if null
+  
+  # TensorBoard (optional)
+  use_tensorboard: false
+  tensorboard_dir: "dfg-classifier/logs/tensorboard"
+  
+  # What to log
+  log_predictions: true
+  log_gradients: false
+  log_attention_weights: false
+
+# Hardware Configuration
+device:
+  # Device selection
+  use_cuda: true
+  cuda_device: 0  # GPU device ID
+  use_mps: false  # For Apple Silicon
+  
+  # DataLoader settings
+  num_workers: 4
+  pin_memory: true
+  prefetch_factor: 2
+  
+  # Mixed precision training
+  use_amp: true  # Automatic Mixed Precision
+  amp_opt_level: "O1"  # O0, O1, O2, O3
+  
+  # Memory optimization
+  gradient_checkpointing: false  # Enable for large models
+  cpu_offload: false  # Offload to CPU if GPU memory limited
+
+# Evaluation Configuration
+evaluation:
+  # Metrics to compute
+  metrics: [
+    "accuracy",
+    "precision",
+    "recall",
+    "f1",
+    "macro_f1",
+    "weighted_f1",
+    "confusion_matrix",
+    "classification_report"
+  ]
+  
+  # Evaluation settings
+  save_predictions: true
+  save_probabilities: true
+  detailed_report: true
+  
+  # Confidence thresholding
+  confidence_threshold: 0.5
+  calibration: true  # Apply temperature scaling
+
+# Inference Configuration
+inference:
+  batch_size: 32
+  return_probabilities: true
+  return_attention_weights: false
+  top_k: 5  # Return top-k predictions
+  output_format: "json"  # json, csv, txt
+  
+  # Post-processing
+  apply_threshold: false
+  threshold: 0.5
+
+# Advanced Features
+advanced:
+  # Ensemble methods
+  use_ensemble: false
+  ensemble_models: []
+  
+  # Active learning
+  use_active_learning: false
+  uncertainty_sampling: false
+  
+  # Knowledge distillation
+  use_distillation: false
+  teacher_model: null
+  temperature: 2.0
+  alpha: 0.5
+  
+  # Multi-task learning
+  use_multi_task: false
+  auxiliary_tasks: []
+
+# Dataset Collection (for automatic data gathering)
+data_collection:
+  # Sources to collect from
+  sources: ["arxiv", "pubmed"]
+  
+  # Collection limits
+  papers_per_category: 100
+  max_total_papers: 3000
+  
+  # API settings
+  arxiv_delay: 3.0  # Seconds between requests
+  pubmed_delay: 0.34  # NCBI requirement
+  pubmed_email: "your.email@example.com"
+  
+  # PDF download
+  download_pdfs: false
+  pdf_dir: "dfg-classifier/data/raw/pdfs/"
+
+# Model-specific optimizations for SciBERT
+scibert_optimizations:
+  # Layer-wise learning rate decay
+  use_layer_wise_lr: true
+  layer_wise_lr_decay: 0.95
+  
+  # Differential learning rates
+  encoder_lr: 2e-5
+  classifier_lr: 1e-4
+  
+  # Freezing strategies
+  freeze_embeddings: false
+  freeze_encoder_layers: 0  # Number of bottom layers to freeze
+  
+  # Task-specific adaptations
+  add_pooling_layer: true
+  pooling_type: "cls"  # cls, mean, max, attention
+
+
+
+

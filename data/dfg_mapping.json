@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "description": "DFG (German Research Foundation) Classification System Mapping",
+    "version": "1.0",
+    "total_levels": 4,
+    "total_review_boards": 218
+  },
+  "level_1": {
+    "description": "Main Scientific Disciplines",
+    "classes": {
+      "1": "Humanities & Social Sciences",
+      "2": "Life Sciences", 
+      "3": "Natural Sciences",
+      "4": "Engineering Sciences"
+    }
+  },
+  "level_2": {
+    "description": "Subject Areas",
+    "classes": {
+      "1.11": "Ancient Cultures",
+      "1.12": "History",
+      "1.13": "Philosophy",
+      "1.14": "Theology and Religious Studies",
+      "1.15": "Literature and Linguistics",
+      "1.16": "Art and Music Studies",
+      "2.11": "Basic Research in Biology",
+      "2.12": "Medicine",
+      "2.13": "Agriculture, Forestry and Veterinary Medicine",
+      "2.14": "Psychology",
+      "2.15": "Educational Research",
+      "2.16": "Social Sciences",
+      "2.17": "Economics",
+      "2.18": "Law",
+      "3.11": "Mathematics",
+      "3.12": "Physics",
+      "3.13": "Chemistry",
+      "3.14": "Geosciences",
+      "3.15": "Computer Science",
+      "3.16": "Systems Engineering",
+      "4.11": "Mechanical and Industrial Engineering",
+      "4.12": "Construction Engineering and Architecture",
+      "4.13": "Electrical Engineering and Information Technology",
+      "4.14": "Production Technology",
+      "4.15": "Materials Science and Engineering",
+      "4.16": "Chemical and Process Engineering",
+      "4.17": "Traffic and Transport Systems",
+      "4.18": "Aerospace Engineering",
+      "4.19": "Marine Technology",
+      "4.20": "Other Engineering Sciences"
+    }
+  },
+  "level_3": {
+    "description": "Research Areas (Sample - would be expanded with full dataset)",
+    "classes": {
+      "1.11.01": "Prehistory and World Archaeology",
+      "1.11.02": "Greek and Latin Philology",
+      "1.12.01": "Medieval History",
+      "1.12.02": "Modern History",
+      "2.11.01": "Molecular Biology",
+      "2.11.02": "Cell Biology",
+      "3.11.01": "Molecular Chemistry",
+      "3.11.02": "Physical Chemistry",
+      "4.11.01": "Production Technology",
+      "4.11.02": "Manufacturing Technology"
+    }
+  },
+  "level_4": {
+    "description": "Review Boards (Sample - would include all 218 boards)",
+    "classes": {
+      "1.11-01": "Prehistory and World Archaeology",
+      "1.11-02": "Greek and Latin Philology",
+      "1.12-01": "Medieval History",
+      "1.12-02": "Modern History",
+      "1.13-01": "Theoretical Philosophy",
+      "1.13-02": "Practical Philosophy",
+      "2.11-01": "Molecular Biology",
+      "2.11-02": "Cell Biology",
+      "2.12-01": "Human Medicine",
+      "2.12-02": "Veterinary Medicine",
+      "3.11-01": "Molecular Chemistry",
+      "3.11-02": "Physical Chemistry",
+      "3.12-01": "Theoretical Physics",
+      "3.12-02": "Experimental Physics",
+      "4.11-01": "Production Technology",
+      "4.11-02": "Manufacturing Technology",
+      "4.12-01": "Structural Engineering",
+      "4.12-02": "Architecture"
+    }
+  },
+  "hierarchical_mapping": {
+    "1.11": {
+      "level_1": "1",
+      "level_3": ["1.11.01", "1.11.02"],
+      "level_4": ["1.11-01", "1.11-02"]
+    },
+    "1.12": {
+      "level_1": "1", 
+      "level_3": ["1.12.01", "1.12.02"],
+      "level_4": ["1.12-01", "1.12-02"]
+    },
+    "2.11": {
+      "level_1": "2",
+      "level_3": ["2.11.01", "2.11.02"],
+      "level_4": ["2.11-01", "2.11-02"]
+    },
+    "3.11": {
+      "level_1": "3",
+      "level_3": ["3.11.01", "3.11.02"],
+      "level_4": ["3.11-01", "3.11-02"]
+    },
+    "4.11": {
+      "level_1": "4",
+      "level_3": ["4.11.01", "4.11.02"],
+      "level_4": ["4.11-01", "4.11-02"]
+    }
+  }
+}
+
