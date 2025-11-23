@@ -68,7 +68,8 @@ class Trainer:
             dropout_rate=model_config.get('dropout_rate', 0.3),
             freeze_bert=model_config.get('freeze_bert', False),
             hierarchical=model_config.get('hierarchical', False),
-            dfg_mapping=self.dfg_mapping
+            dfg_mapping=self.dfg_mapping,
+            allowed_labels=model_config.get('allowed_labels')
         )
         
         model.to(self.device)

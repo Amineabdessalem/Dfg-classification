@@ -11,7 +11,7 @@ from huggingface_hub import hf_hub_download
 from transformers.modeling_flax_pytorch_utils import load_flax_checkpoint_in_pytorch_model
 from data_processor import load_config, load_dfg_mapping
 import numpy as np
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple, List
 
 import logging
 
@@ -252,13 +252,17 @@ class DFGClassifier(nn.Module):
         freeze_bert: bool = False,
         hierarchical: bool = False,
         num_classes_per_level: Dict[int, int] = None,
-        dfg_mapping: Dict = None
+        dfg_mapping: Dict = None,
+        allowed_labels: Optional[List[str]] = None
     ):
         super(DFGClassifier, self).__init__()
         
         self.hierarchical = hierarchical
         self.dfg_mapping = dfg_mapping or {}
+        self.allowed_labels = allowed_labels
         
+        if allowed_labels and not hierarchical:
+            num_classes = len(allowed_labels)
         if hierarchical:
             self.model = HierarchicalSciBERTClassifier(
                 model_name=model_name,
@@ -282,6 +286,11 @@ class DFGClassifier(nn.Module):
         try:
             if self.dfg_mapping:
                 level_2_classes = self.dfg_mapping.get('level_2', {}).get('classes', {})
+                if self.allowed_labels:
+                    level_2_classes = {
+                        code: name for code, name in level_2_classes.items()
+                        if code in self.allowed_labels
+                    }
                 self.label_to_id = {code: idx for idx, code in enumerate(level_2_classes.keys())}
                 self.id_to_label = {idx: code for code, idx in self.label_to_id.items()}
                 self.id_to_name = {idx: name for code, idx in self.label_to_id.items() for name in [level_2_classes[code]]}
@@ -311,9 +320,12 @@ class DFGClassifier(nn.Module):
             "4.20": "Other Engineering Sciences"
         }
         
-        self.label_to_id = {code: idx for idx, code in enumerate(default_labels.keys())}
+        labels = default_labels
+        if self.allowed_labels:
+            labels = {code: name for code, name in default_labels.items() if code in self.allowed_labels}
+        self.label_to_id = {code: idx for idx, code in enumerate(labels.keys())}
         self.id_to_label = {idx: code for code, idx in self.label_to_id.items()}
-        self.id_to_name = {idx: name for code, idx in self.label_to_id.items() for name in [default_labels[code]]}
+        self.id_to_name = {idx: labels[code] for code, idx in self.label_to_id.items()}
     
     def forward(self, *args, **kwargs):
         """Forward pass through the model"""
@@ -388,11 +400,17 @@ def _default_model_kwargs() -> Dict:
     config = load_config("config.yaml")
     dfg_mapping = load_dfg_mapping("data/dfg_mapping.json")
     model_cfg = config.get("model", {})
+    allowed_labels = model_cfg.get("allowed_labels")
     num_classes = model_cfg.get("num_classes")
     if not num_classes:
         # fallback to level_2 class count
         level2 = dfg_mapping.get("level_2", {}).get("classes", {})
-        num_classes = len(level2)
+        if allowed_labels:
+            num_classes = len(allowed_labels)
+        else:
+            num_classes = len(level2)
+    elif allowed_labels:
+        num_classes = len(allowed_labels)
 
     return {
         "model_name": model_cfg.get("name", "allenai/scibert_scivocab_uncased"),
@@ -401,6 +419,7 @@ def _default_model_kwargs() -> Dict:
         "freeze_bert": model_cfg.get("freeze_bert", False),
         "hierarchical": model_cfg.get("hierarchical", False),
         "dfg_mapping": dfg_mapping,
+        "allowed_labels": allowed_labels,
     }
 
 
@@ -467,7 +486,8 @@ def save_model(
             'num_classes': model.model.num_classes if not model.hierarchical else model.model.num_classes_per_level,
             'dropout_rate': model.model.dropout_rate,
             'hierarchical': model.hierarchical,
-            'dfg_mapping': model.dfg_mapping
+            'dfg_mapping': model.dfg_mapping,
+            'allowed_labels': model.allowed_labels
         }
     }
     

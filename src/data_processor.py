@@ -162,6 +162,10 @@ class DFGDatasetProcessor:
     def __init__(self, config: Dict, dfg_mapping: Dict = None):
         self.config = config
         self.dfg_mapping = dfg_mapping or {}
+        self.allowed_labels = (
+            self.config.get('model', {}).get('allowed_labels')
+            if self.config else None
+        )
         
         # Initialize tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -176,6 +180,11 @@ class DFGDatasetProcessor:
         try:
             if self.dfg_mapping:
                 level_2_classes = self.dfg_mapping.get('level_2', {}).get('classes', {})
+                if self.allowed_labels:
+                    level_2_classes = {
+                        code: name for code, name in level_2_classes.items()
+                        if code in self.allowed_labels
+                    }
                 self.label_to_id = {code: idx for idx, code in enumerate(level_2_classes.keys())}
                 self.id_to_label = {idx: code for code, idx in self.label_to_id.items()}
                 self.id_to_name = {idx: level_2_classes[code] for code, idx in self.label_to_id.items()}

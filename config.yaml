@@ -3,8 +3,12 @@
 # Model Configuration
 model:
   name: "allenai/scibert_scivocab_uncased"
-  max_sequence_length: 512
-  num_classes: 30  # Level 2 subject areas (will be updated based on actual data)
+  max_sequence_length: 128  # Further reduced for 4GB GPU memory
+  num_classes: 3   # 3-class classification: 4.41, 4.42, 4.43
+  allowed_labels:
+    - "4.41"
+    - "4.42"
+    - "4.43"
   dropout_rate: 0.3
   freeze_bert: false
   hierarchical: false
@@ -12,11 +16,11 @@ model:
 # Training Configuration
 training:
   learning_rate: 0.00002  # 2e-5
-  batch_size: 8
-  num_epochs: 3
-  warmup_steps: 100
+  batch_size: 2  # Very small batch for 4GB GPU
+  num_epochs: 15
+  warmup_steps: 50
   weight_decay: 0.01
-  gradient_accumulation_steps: 1
+  gradient_accumulation_steps: 8  # Effective batch size = 16
   max_grad_norm: 1.0
   early_stopping_patience: 3
   save_best_model: true
@@ -50,7 +54,7 @@ logging:
 # Hardware Configuration
 device:
   use_cuda: true
-  num_workers: 4
+  num_workers: 0  # Set to 0 for Windows to avoid multiprocessing issues
   pin_memory: true
 
 # Evaluation Configuration

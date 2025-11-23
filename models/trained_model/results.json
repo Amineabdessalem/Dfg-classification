@@ -1,0 +1,26 @@
+{
+  "model": "SciBERT (allenai/scibert_scivocab_uncased)",
+  "task": "3-class DFG classification",
+  "classes": ["4.41 Systems Engineering", "4.42 Electrical Engineering", "4.43 Computer Science"],
+  "dataset": {
+    "total": 191,
+    "train": 152,
+    "val": 19,
+    "test": 20
+  },
+  "training": {
+    "epochs_completed": 1,
+    "batch_size": 2,
+    "learning_rate": 2e-05,
+    "max_length": 128
+  },
+  "results": {
+    "val_f1": 0.9460,
+    "val_accuracy": 0.9474,
+    "val_loss": 0.2568,
+    "train_loss": 0.8998
+  },
+  "performance": "Excellent - 94.6% F1 score",
+  "date": "2025-11-23"
+}
+

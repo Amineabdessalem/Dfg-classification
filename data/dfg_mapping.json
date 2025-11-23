@@ -1,15 +1,16 @@
 {
   "metadata": {
     "description": "DFG (German Research Foundation) Classification System Mapping",
-    "version": "1.0",
-    "total_levels": 4,
-    "total_review_boards": 218
+    "version": "2.0",
+    "total_level_1_classes": 4,
+    "total_subject_areas": 49,
+    "total_review_boards": 214
   },
   "level_1": {
     "description": "Main Scientific Disciplines",
     "classes": {
-      "1": "Humanities & Social Sciences",
-      "2": "Life Sciences", 
+      "1": "Humanities and Social Sciences",
+      "2": "Life Sciences",
       "3": "Natural Sciences",
       "4": "Engineering Sciences"
     }
@@ -19,100 +20,738 @@
     "classes": {
       "1.11": "Ancient Cultures",
       "1.12": "History",
-      "1.13": "Philosophy",
-      "1.14": "Theology and Religious Studies",
-      "1.15": "Literature and Linguistics",
-      "1.16": "Art and Music Studies",
-      "2.11": "Basic Research in Biology",
-      "2.12": "Medicine",
-      "2.13": "Agriculture, Forestry and Veterinary Medicine",
-      "2.14": "Psychology",
-      "2.15": "Educational Research",
-      "2.16": "Social Sciences",
-      "2.17": "Economics",
-      "2.18": "Law",
-      "3.11": "Mathematics",
-      "3.12": "Physics",
-      "3.13": "Chemistry",
-      "3.14": "Geosciences",
-      "3.15": "Computer Science",
-      "3.16": "Systems Engineering",
-      "4.11": "Mechanical and Industrial Engineering",
-      "4.12": "Construction Engineering and Architecture",
-      "4.13": "Electrical Engineering and Information Technology",
-      "4.14": "Production Technology",
-      "4.15": "Materials Science and Engineering",
-      "4.16": "Chemical and Process Engineering",
-      "4.17": "Traffic and Transport Systems",
-      "4.18": "Aerospace Engineering",
-      "4.19": "Marine Technology",
-      "4.20": "Other Engineering Sciences"
+      "1.13": "Art History, Music, Theatre and Media Studies",
+      "1.14": "Linguistics",
+      "1.15": "Literary Studies",
+      "1.16": "Social and Cultural Anthropology, Non-European Cultures, Jewish Studies and Religious Studies",
+      "1.17": "Theology",
+      "1.18": "Philosophy",
+      "1.21": "Educational Research",
+      "1.22": "Psychology",
+      "1.23": "Social Sciences",
+      "1.24": "Economics",
+      "1.25": "Jurisprudence",
+      "2.11": "Basic Research in Biology and Medicine",
+      "2.12": "Plant Sciences",
+      "2.13": "Zoology",
+      "2.21": "Microbiology, Virology and Immunology",
+      "2.22": "Medicine",
+      "2.23": "Neurosciences",
+      "2.31": "Agriculture, Forestry and Veterinary Medicine",
+      "3.11": "Molecular Chemistry",
+      "3.12": "Chemical Solid State and Surface Research",
+      "3.13": "Physical Chemistry",
+      "3.14": "Analytical Chemistry",
+      "3.15": "Biological Chemistry and Food Chemistry",
+      "3.16": "Polymer Research",
+      "3.17": "Theoretical Chemistry",
+      "3.21": "Condensed Matter Physics",
+      "3.22": "Statistical Physics, Nonlinear Dynamics, Complex Systems, Soft and Fluid Matter, Biological Physics",
+      "3.23": "Optics, Quantum Optics and Physics of Atoms, Molecules and Plasmas",
+      "3.24": "Particles, Nuclei and Fields",
+      "3.25": "Astrophysics and Astronomy",
+      "3.31": "Mathematics",
+      "3.41": "Atmospheric Science, Oceanography and Climate Research",
+      "3.42": "Geology and Palaeontology",
+      "3.43": "Geophysics and Geodesy",
+      "3.44": "Mineralogy, Petrology and Geochemistry",
+      "3.45": "Geography",
+      "3.46": "Water Research",
+      "4.11": "Production Technology",
+      "4.12": "Mechanics and Constructive Mechanical Engineering",
+      "4.21": "Process Engineering, Technical Chemistry",
+      "4.22": "Fluid Mechanics, Technical Thermodynamics and Thermal Energy Engineering",
+      "4.31": "Materials Engineering",
+      "4.32": "Materials Science",
+      "4.41": "Systems Engineering",
+      "4.42": "Electrical Engineering and Information Technology",
+      "4.43": "Computer Science",
+      "4.51": "Construction Engineering and Architecture"
     }
   },
   "level_3": {
-    "description": "Research Areas (Sample - would be expanded with full dataset)",
-    "classes": {
-      "1.11.01": "Prehistory and World Archaeology",
-      "1.11.02": "Greek and Latin Philology",
-      "1.12.01": "Medieval History",
-      "1.12.02": "Modern History",
-      "2.11.01": "Molecular Biology",
-      "2.11.02": "Cell Biology",
-      "3.11.01": "Molecular Chemistry",
-      "3.11.02": "Physical Chemistry",
-      "4.11.01": "Production Technology",
-      "4.11.02": "Manufacturing Technology"
-    }
+    "description": "Research Areas (not provided in current hierarchy)",
+    "classes": {}
   },
   "level_4": {
-    "description": "Review Boards (Sample - would include all 218 boards)",
+    "description": "Review Boards",
     "classes": {
       "1.11-01": "Prehistory and World Archaeology",
       "1.11-02": "Greek and Latin Philology",
+      "1.11-03": "Ancient History",
+      "1.11-04": "Classical, Roman, Christian and Islamic Archaeology",
+      "1.11-05": "Egyptology and Ancient Near Eastern Studies",
       "1.12-01": "Medieval History",
-      "1.12-02": "Modern History",
-      "1.13-01": "Theoretical Philosophy",
-      "1.13-02": "Practical Philosophy",
-      "2.11-01": "Molecular Biology",
-      "2.11-02": "Cell Biology",
-      "2.12-01": "Human Medicine",
-      "2.12-02": "Veterinary Medicine",
-      "3.11-01": "Molecular Chemistry",
-      "3.11-02": "Physical Chemistry",
-      "3.12-01": "Theoretical Physics",
-      "3.12-02": "Experimental Physics",
-      "4.11-01": "Production Technology",
-      "4.11-02": "Manufacturing Technology",
-      "4.12-01": "Structural Engineering",
-      "4.12-02": "Architecture"
+      "1.12-02": "Early Modern History",
+      "1.12-03": "Modern and Contemporary History",
+      "1.12-04": "History of Science",
+      "1.13-01": "Art History",
+      "1.13-02": "Musicology",
+      "1.13-03": "Theatre and Media Studies",
+      "1.14-01": "General and Comparative Linguistics, Experimental Linguistics, Typology, Non-European Languages",
+      "1.14-02": "Individual Linguistics, Historical Linguistics",
+      "1.14-03": "Applied Linguistics, Computational Linguistics",
+      "1.15-01": "German Medieval Studies (Medieval German Literature)",
+      "1.15-02": "German Literary and Cultural Studies (Modern German Literature)",
+      "1.15-03": "European and American Literary and Cultural Studies",
+      "1.15-04": "General and Comparative Literary Studies; Cultural Studies",
+      "1.16-01": "Social and Cultural Anthropology and Ethnology",
+      "1.16-02": "Asian Studies",
+      "1.16-03": "African, American and Oceania Studies",
+      "1.16-04": "Islamic Studies, Arabian Studies, Semitic Studies",
+      "1.16-05": "Religious Studies and Jewish Studies",
+      "1.17-01": "Protestant Theology",
+      "1.17-02": "Roman Catholic Theology",
+      "1.18-01": "History of Philosophy",
+      "1.18-02": "Theoretical Philosophy",
+      "1.18-03": "Practical Philosophy",
+      "1.21-01": "General Education and History of Education",
+      "1.21-02": "General and Domain-Specific Teaching and Learning",
+      "1.21-03": "Education Systems and Educational Institutions",
+      "1.21-04": "Educational Research on Socialisation, Welfare and Professionalism",
+      "1.22-01": "General, Cognitive and Mathematical Psychology",
+      "1.22-02": "Biological Psychology and Cognitive Neuroscience",
+      "1.22-03": "Developmental and Educational Psychology",
+      "1.22-04": "Social Psychology, Industrial and Organisational Psychology",
+      "1.22-05": "Personality Psychology, Clinical and Medical Psychology, Methodology",
+      "1.23-01": "Sociological Theory",
+      "1.23-02": "Empirical Social Research",
+      "1.23-03": "Communication Sciences",
+      "1.23-04": "Political Science",
+      "1.24-01": "Economic Theory",
+      "1.24-02": "Economic Policy, Applied Economics",
+      "1.24-03": "Accounting und Finance",
+      "1.24-04": "Management and Marketing",
+      "1.24-05": "Operations Management and Computer Science for Business Administration",
+      "1.24-06": "Statistics and Econometrics",
+      "1.24-07": "Economic and Social History",
+      "1.25-01": "Principles of Law and Jurisprudence",
+      "1.25-02": "Private Law",
+      "1.25-03": "Public Law",
+      "1.25-04": "Criminal Law",
+      "1.25-05": "Criminology",
+      "2.11-01": "Biochemistry",
+      "2.11-02": "Biophysics",
+      "2.11-03": "Cell Biology",
+      "2.11-04": "Structural Biology",
+      "2.11-05": "General Genetics and Functional Genome Biology",
+      "2.11-06": "Developmental Biology",
+      "2.11-07": "Bioinformatics and Theoretical Biology",
+      "2.12-01": "Evolution and Systematics of Plants and Fungi",
+      "2.12-02": "Ecology and Biodiversity of Plants and Ecosystems",
+      "2.12-03": "Organismic Interactions, Chemical Ecology and Microbiomes of Plant Systems",
+      "2.12-04": "Plant Physiology",
+      "2.12-05": "Plant Biochemistry and Biophysics",
+      "2.12-06": "Plant Cell and Developmental Biology",
+      "2.12-07": "Plant Genetics and Genomics",
+      "2.13-01": "Systematics and Morphology (Zoology)",
+      "2.13-02": "Evolution, Anthropology",
+      "2.13-03": "Ecology and Biodiversity of Animals and Ecosystems, Organismic Interactions",
+      "2.13-04": "Sensory and Behavioural Biology",
+      "2.13-05": "Animal Physiology and Biochemistry",
+      "2.13-06": "Evolutionary Cell and Developmental Biology (Zoology)",
+      "2.21-01": "Metabolism, Biochemistry and Genetics of Microorganisms",
+      "2.21-02": "Microbial Ecology and Applied Microbiology",
+      "2.21-03": "Medical Microbiology and Mycology, Hygiene, Molecular Infection Biology",
+      "2.21-04": "Virology",
+      "2.21-05": "Immunology",
+      "2.21-06": "Parasitology and Biology of Tropical Infectious Disease Pathogens",
+      "2.22-01": "Epidemiology and Medical Biometry/Statistics",
+      "2.22-02": "Public Health, Healthcare Research, Social and Occupational Medicine",
+      "2.22-03": "Human Genetics",
+      "2.22-04": "Anatomy and Physiology",
+      "2.22-05": "Nutritional Sciences",
+      "2.22-06": "Pathology",
+      "2.22-07": "Medical Informatics and Medical Bioinformatics",
+      "2.22-08": "Pharmacy",
+      "2.22-09": "Pharmacology",
+      "2.22-10": "Toxicology, Laboratory Medicine",
+      "2.22-11": "Anaesthesiology",
+      "2.22-12": "Cardiology, Angiology",
+      "2.22-13": "Pneumology, Thoracic Surgery",
+      "2.22-14": "Hematology, Oncology",
+      "2.22-15": "Gastroenterology",
+      "2.22-16": "Nephrology",
+      "2.22-17": "Endocrinology, Diabetology, Metabolism",
+      "2.22-18": "Rheumatology",
+      "2.22-19": "Dermatology",
+      "2.22-20": "Pediatric and Adolescent Medicine",
+      "2.22-21": "Gynaecology and Obstetrics",
+      "2.22-22": "Clinical Immunology and Allergology",
+      "2.22-23": "Reproductive Medicine, Urology",
+      "2.22-24": "Biogerontology and Geriatric Medicine",
+      "2.22-25": "General and Visceral Surgery",
+      "2.22-26": "Cardiac and Vascular Surgery",
+      "2.22-27": "Orthopaedics, Traumatology, Reconstructive Surgery",
+      "2.22-28": "Dentistry, Oral Surgery",
+      "2.22-29": "Otolaryngology, Phoniatrics and Audiology",
+      "2.22-30": "Radiology",
+      "2.22-31": "Clinical Infectiology and Tropical Medicine",
+      "2.22-32": "Medical Physics, Biomedical Technology",
+      "2.22-33": "Nuclear Medicine, Radiotherapy, Radiobiology",
+      "2.23-01": "Developmental Neurobiology",
+      "2.23-02": "Molecular Biology and Physiology of Neurons and Glial Cells",
+      "2.23-03": "Experimental and Theoretical Network Neuroscience",
+      "2.23-04": "Cognitive, Systems and Behavioural Neurobiology",
+      "2.23-05": "Experimental Models for the Understanding of Nervous System Diseases",
+      "2.23-06": "Molecular and Cellular Neurology and Neuropathology",
+      "2.23-07": "Clinical Neurology; Neurosurgery and Neuroradiology",
+      "2.23-08": "Human Cognitive and Systems Neuroscience",
+      "2.23-09": "Biological Psychiatry",
+      "2.23-10": "Clinical Psychiatry, Psychotherapy, Child and Adolescent Psychiatry",
+      "2.23-11": "Ophthalmology",
+      "2.31-01": "Soil Sciences",
+      "2.31-02": "Plant Breeding and Plant Pathology",
+      "2.31-03": "Plant Cultivation, Plant Nutrition, Agricultural Technology",
+      "2.31-04": "Ecology of Land Use",
+      "2.31-05": "Agricultural Economics, Agricultural Policy, Agricultural Sociology",
+      "2.31-06": "Forestry",
+      "2.31-07": "Animal Breeding, Animal Nutrition, Animal Husbandry",
+      "2.31-08": "Veterinary Medical Science",
+      "3.11-01": "Inorganic Molecular Chemistry - Synthesis and Characterisation",
+      "3.11-02": "Organic Molecular Chemistry - Synthesis and Characterisation",
+      "3.12-01": "Solid State and Surface Chemistry, Material Synthesis",
+      "3.12-02": "Physical Chemistry of Solids and Surfaces, Material Characterisation",
+      "3.13-01": "Physical Chemistry of Molecules, Liquids and Interfaces, Biophysical Chemistry",
+      "3.14-01": "Analytical Chemistry",
+      "3.15-01": "Biological and Biomimetic Chemistry",
+      "3.15-02": "Food Chemistry",
+      "3.16-01": "Preparatory and Physical Chemistry of Polymers",
+      "3.16-02": "Experimental and Theoretical Physics of Polymers",
+      "3.16-03": "Polymer Materials",
+      "3.17-01": "Theoretical Chemistry: Electron Structure, Dynamics, Simulation",
+      "3.17-02": "Theoretical Chemistry: Molecules, Materials, Surfaces",
+      "3.21-01": "Experimental Condensed Matter Physics",
+      "3.21-02": "Theoretical Condensed Matter Physics",
+      "3.22-01": "Statistical Physics, Nonlinear Dynamics, Complex Systems, Soft and Fluid Matter, Biological Physics",
+      "3.23-01": "Optics, Quantum Optics and Physics of Atoms, Molecules and Plasmas",
+      "3.24-01": "Nuclear and Elementary Particle Physics, Quantum Mechanics, Relativity, Fields",
+      "3.25-01": "Astrophysics and Astronomy",
+      "3.31-01": "Mathematics",
+      "3.41-01": "Atmospheric Science",
+      "3.41-02": "Oceanography",
+      "3.42-01": "Geology",
+      "3.42-02": "Palaeontology",
+      "3.43-01": "Geophysics",
+      "3.43-02": "Geodesy, Photogrammetry, Remote Sensing, Geoinformatics, Cartography",
+      "3.44-01": "Mineralogy, Petrology and Geochemistry",
+      "3.45-01": "Physical Geography",
+      "3.45-02": "Human Geography",
+      "3.46-01": "Hydrogeology, Hydrology, Limnology, Urban Water Management, Water Chemistry, Integrated Water Resources Management",
+      "4.11-01": "Metal-Cutting and Abrasive Manufacturing Engineering",
+      "4.11-02": "Primary Shaping and Reshaping Technology, Additive Manufacturing",
+      "4.11-03": "Joining and Separation Technology",
+      "4.11-04": "Plastics Engineering",
+      "4.11-05": "Production Systems, Operations Management, Quality Management and Factory Planning",
+      "4.11-06": "Production Automation and Assembly Technology",
+      "4.12-01": "Engineering Design, Machine Elements, Product Development",
+      "4.12-02": "Mechanics",
+      "4.12-03": "Lightweight Construction, Textile Technology",
+      "4.12-04": "Acoustics",
+      "4.21-01": "Chemical and Thermal Process Engineering",
+      "4.21-02": "Technical Chemistry",
+      "4.21-03": "Mechanical Process Engineering",
+      "4.21-04": "Biological Process Engineering",
+      "4.21-05": "Systems Process Engineering",
+      "4.22-01": "Energy Process Engineering",
+      "4.22-02": "Technical Thermodynamics",
+      "4.22-03": "Fluid Mechanics",
+      "4.22-04": "Hydraulic and Turbo Engines and Piston Engines",
+      "4.31-01": "Metallurgical, Thermal and Thermomechanical Treatment of Materials",
+      "4.31-02": "Materials in Sintering Processes and Generative Manufacturing Processes",
+      "4.31-03": "Coating and Surface Technology",
+      "4.31-04": "Mechanical Properties of Metallic Materials and their Microstructural Origins",
+      "4.31-05": "Glass, Ceramics and Derived Composites",
+      "4.31-06": "Polymeric and Biogenic Materials and Derived Composites",
+      "4.32-01": "Synthesis and Properties of Functional  Materials",
+      "4.32-02": "Biomaterials",
+      "4.32-03": "Thermodynamics and Kinetics as well as Properties of Phases and Microstructure of Materials",
+      "4.32-04": "Computer-Aided Design of Materials and Simulation of Materials Behaviour from Atomic to Microscopic Scale",
+      "4.41-01": "Automation, Mechatronics, Control Systems, Intelligent Technical Systems, Robotics",
+      "4.41-02": "Measurement Systems",
+      "4.41-03": " Microsystems",
+      "4.41-04": "Traffic and Transport Systems, Intelligent and Automated Traffic",
+      "4.41-05": "Human Factors, Ergonomics, Human-Machine Systems",
+      "4.41-06": "Biomedical Systems Technology",
+      "4.42-01": "Electronic Semiconductors, Components and Circuits, Integrated Systems, Sensor Technology, Theoretical Electrical Engineering",
+      "4.42-02": "Communication Technology and Networks, High-Frequency Technology and Photonic Systems, Signal Processing and Machine Learning for Information Technology",
+      "4.42-03": "Electrical Energy Systems, Power Management, Power Electronics, Electrical Machines and Drives",
+      "4.42-04": "Hardware Systems and Architectures for Information Technology and Artificial Intelligence, Quantum Engineering Systems",
+      "4.43-01": "Theoretical Computer Science",
+      "4.43-02": "Software Engineering and Programming Languages",
+      "4.43-03": "Security and Dependability, Operating, Communication and Distributed Systems",
+      "4.43-04": "Artificial Intelligence and Machine Learning Methods",
+      "4.43-05": "Image and Language Processing, Computer Graphics and Visualisation, Human Computer Interaction, Ubiquitous and Wearable Computing",
+      "4.43-06": "Data Management, Data-Intensive Systems, Computer Science Methods in Business Informatics",
+      "4.43-07": "Computer Architecture, Embedded and Massively Parallel Systems",
+      "4.51-01": "Architecture, Building and Construction History, Construction Research, Sustainable Building Technology",
+      "4.51-02": "Urbanism, Spatial Planning, Transportation and Infrastructure Planning, Landscape Planning",
+      "4.51-03": "Construction Material Sciences, Chemistry, Building Physics",
+      "4.51-04": "Structural Engineering, Building Informatics and Construction Operation",
+      "4.51-05": "Applied Mechanics, Statics and Dynamics",
+      "4.51-06": "Geotechnics, Hydraulic Engineering"
     }
   },
   "hierarchical_mapping": {
     "1.11": {
       "level_1": "1",
-      "level_3": ["1.11.01", "1.11.02"],
-      "level_4": ["1.11-01", "1.11-02"]
+      "review_boards": [
+        "1.11-01",
+        "1.11-02",
+        "1.11-03",
+        "1.11-04",
+        "1.11-05"
+      ]
     },
     "1.12": {
-      "level_1": "1", 
-      "level_3": ["1.12.01", "1.12.02"],
-      "level_4": ["1.12-01", "1.12-02"]
+      "level_1": "1",
+      "review_boards": [
+        "1.12-01",
+        "1.12-02",
+        "1.12-03",
+        "1.12-04"
+      ]
+    },
+    "1.13": {
+      "level_1": "1",
+      "review_boards": [
+        "1.13-01",
+        "1.13-02",
+        "1.13-03"
+      ]
+    },
+    "1.14": {
+      "level_1": "1",
+      "review_boards": [
+        "1.14-01",
+        "1.14-02",
+        "1.14-03"
+      ]
+    },
+    "1.15": {
+      "level_1": "1",
+      "review_boards": [
+        "1.15-01",
+        "1.15-02",
+        "1.15-03",
+        "1.15-04"
+      ]
+    },
+    "1.16": {
+      "level_1": "1",
+      "review_boards": [
+        "1.16-01",
+        "1.16-02",
+        "1.16-03",
+        "1.16-04",
+        "1.16-05"
+      ]
+    },
+    "1.17": {
+      "level_1": "1",
+      "review_boards": [
+        "1.17-01",
+        "1.17-02"
+      ]
+    },
+    "1.18": {
+      "level_1": "1",
+      "review_boards": [
+        "1.18-01",
+        "1.18-02",
+        "1.18-03"
+      ]
+    },
+    "1.21": {
+      "level_1": "1",
+      "review_boards": [
+        "1.21-01",
+        "1.21-02",
+        "1.21-03",
+        "1.21-04"
+      ]
+    },
+    "1.22": {
+      "level_1": "1",
+      "review_boards": [
+        "1.22-01",
+        "1.22-02",
+        "1.22-03",
+        "1.22-04",
+        "1.22-05"
+      ]
+    },
+    "1.23": {
+      "level_1": "1",
+      "review_boards": [
+        "1.23-01",
+        "1.23-02",
+        "1.23-03",
+        "1.23-04"
+      ]
+    },
+    "1.24": {
+      "level_1": "1",
+      "review_boards": [
+        "1.24-01",
+        "1.24-02",
+        "1.24-03",
+        "1.24-04",
+        "1.24-05",
+        "1.24-06",
+        "1.24-07"
+      ]
+    },
+    "1.25": {
+      "level_1": "1",
+      "review_boards": [
+        "1.25-01",
+        "1.25-02",
+        "1.25-03",
+        "1.25-04",
+        "1.25-05"
+      ]
     },
     "2.11": {
       "level_1": "2",
-      "level_3": ["2.11.01", "2.11.02"],
-      "level_4": ["2.11-01", "2.11-02"]
+      "review_boards": [
+        "2.11-01",
+        "2.11-02",
+        "2.11-03",
+        "2.11-04",
+        "2.11-05",
+        "2.11-06",
+        "2.11-07"
+      ]
+    },
+    "2.12": {
+      "level_1": "2",
+      "review_boards": [
+        "2.12-01",
+        "2.12-02",
+        "2.12-03",
+        "2.12-04",
+        "2.12-05",
+        "2.12-06",
+        "2.12-07"
+      ]
+    },
+    "2.13": {
+      "level_1": "2",
+      "review_boards": [
+        "2.13-01",
+        "2.13-02",
+        "2.13-03",
+        "2.13-04",
+        "2.13-05",
+        "2.13-06"
+      ]
+    },
+    "2.21": {
+      "level_1": "2",
+      "review_boards": [
+        "2.21-01",
+        "2.21-02",
+        "2.21-03",
+        "2.21-04",
+        "2.21-05",
+        "2.21-06"
+      ]
+    },
+    "2.22": {
+      "level_1": "2",
+      "review_boards": [
+        "2.22-01",
+        "2.22-02",
+        "2.22-03",
+        "2.22-04",
+        "2.22-05",
+        "2.22-06",
+        "2.22-07",
+        "2.22-08",
+        "2.22-09",
+        "2.22-10",
+        "2.22-11",
+        "2.22-12",
+        "2.22-13",
+        "2.22-14",
+        "2.22-15",
+        "2.22-16",
+        "2.22-17",
+        "2.22-18",
+        "2.22-19",
+        "2.22-20",
+        "2.22-21",
+        "2.22-22",
+        "2.22-23",
+        "2.22-24",
+        "2.22-25",
+        "2.22-26",
+        "2.22-27",
+        "2.22-28",
+        "2.22-29",
+        "2.22-30",
+        "2.22-31",
+        "2.22-32",
+        "2.22-33"
+      ]
+    },
+    "2.23": {
+      "level_1": "2",
+      "review_boards": [
+        "2.23-01",
+        "2.23-02",
+        "2.23-03",
+        "2.23-04",
+        "2.23-05",
+        "2.23-06",
+        "2.23-07",
+        "2.23-08",
+        "2.23-09",
+        "2.23-10",
+        "2.23-11"
+      ]
+    },
+    "2.31": {
+      "level_1": "2",
+      "review_boards": [
+        "2.31-01",
+        "2.31-02",
+        "2.31-03",
+        "2.31-04",
+        "2.31-05",
+        "2.31-06",
+        "2.31-07",
+        "2.31-08"
+      ]
     },
     "3.11": {
       "level_1": "3",
-      "level_3": ["3.11.01", "3.11.02"],
-      "level_4": ["3.11-01", "3.11-02"]
+      "review_boards": [
+        "3.11-01",
+        "3.11-02"
+      ]
+    },
+    "3.12": {
+      "level_1": "3",
+      "review_boards": [
+        "3.12-01",
+        "3.12-02"
+      ]
+    },
+    "3.13": {
+      "level_1": "3",
+      "review_boards": [
+        "3.13-01"
+      ]
+    },
+    "3.14": {
+      "level_1": "3",
+      "review_boards": [
+        "3.14-01"
+      ]
+    },
+    "3.15": {
+      "level_1": "3",
+      "review_boards": [
+        "3.15-01",
+        "3.15-02"
+      ]
+    },
+    "3.16": {
+      "level_1": "3",
+      "review_boards": [
+        "3.16-01",
+        "3.16-02",
+        "3.16-03"
+      ]
+    },
+    "3.17": {
+      "level_1": "3",
+      "review_boards": [
+        "3.17-01",
+        "3.17-02"
+      ]
+    },
+    "3.21": {
+      "level_1": "3",
+      "review_boards": [
+        "3.21-01",
+        "3.21-02"
+      ]
+    },
+    "3.22": {
+      "level_1": "3",
+      "review_boards": [
+        "3.22-01"
+      ]
+    },
+    "3.23": {
+      "level_1": "3",
+      "review_boards": [
+        "3.23-01"
+      ]
+    },
+    "3.24": {
+      "level_1": "3",
+      "review_boards": [
+        "3.24-01"
+      ]
+    },
+    "3.25": {
+      "level_1": "3",
+      "review_boards": [
+        "3.25-01"
+      ]
+    },
+    "3.31": {
+      "level_1": "3",
+      "review_boards": [
+        "3.31-01"
+      ]
+    },
+    "3.41": {
+      "level_1": "3",
+      "review_boards": [
+        "3.41-01",
+        "3.41-02"
+      ]
+    },
+    "3.42": {
+      "level_1": "3",
+      "review_boards": [
+        "3.42-01",
+        "3.42-02"
+      ]
+    },
+    "3.43": {
+      "level_1": "3",
+      "review_boards": [
+        "3.43-01",
+        "3.43-02"
+      ]
+    },
+    "3.44": {
+      "level_1": "3",
+      "review_boards": [
+        "3.44-01"
+      ]
+    },
+    "3.45": {
+      "level_1": "3",
+      "review_boards": [
+        "3.45-01",
+        "3.45-02"
+      ]
+    },
+    "3.46": {
+      "level_1": "3",
+      "review_boards": [
+        "3.46-01"
+      ]
     },
     "4.11": {
       "level_1": "4",
-      "level_3": ["4.11.01", "4.11.02"],
-      "level_4": ["4.11-01", "4.11-02"]
+      "review_boards": [
+        "4.11-01",
+        "4.11-02",
+        "4.11-03",
+        "4.11-04",
+        "4.11-05",
+        "4.11-06"
+      ]
+    },
+    "4.12": {
+      "level_1": "4",
+      "review_boards": [
+        "4.12-01",
+        "4.12-02",
+        "4.12-03",
+        "4.12-04"
+      ]
+    },
+    "4.21": {
+      "level_1": "4",
+      "review_boards": [
+        "4.21-01",
+        "4.21-02",
+        "4.21-03",
+        "4.21-04",
+        "4.21-05"
+      ]
+    },
+    "4.22": {
+      "level_1": "4",
+      "review_boards": [
+        "4.22-01",
+        "4.22-02",
+        "4.22-03",
+        "4.22-04"
+      ]
+    },
+    "4.31": {
+      "level_1": "4",
+      "review_boards": [
+        "4.31-01",
+        "4.31-02",
+        "4.31-03",
+        "4.31-04",
+        "4.31-05",
+        "4.31-06"
+      ]
+    },
+    "4.32": {
+      "level_1": "4",
+      "review_boards": [
+        "4.32-01",
+        "4.32-02",
+        "4.32-03",
+        "4.32-04"
+      ]
+    },
+    "4.41": {
+      "level_1": "4",
+      "review_boards": [
+        "4.41-01",
+        "4.41-02",
+        "4.41-03",
+        "4.41-04",
+        "4.41-05",
+        "4.41-06"
+      ]
+    },
+    "4.42": {
+      "level_1": "4",
+      "review_boards": [
+        "4.42-01",
+        "4.42-02",
+        "4.42-03",
+        "4.42-04"
+      ]
+    },
+    "4.43": {
+      "level_1": "4",
+      "review_boards": [
+        "4.43-01",
+        "4.43-02",
+        "4.43-03",
+        "4.43-04",
+        "4.43-05",
+        "4.43-06",
+        "4.43-07"
+      ]
+    },
+    "4.51": {
+      "level_1": "4",
+      "review_boards": [
+        "4.51-01",
+        "4.51-02",
+        "4.51-03",
+        "4.51-04",
+        "4.51-05",
+        "4.51-06"
+      ]
     }
-  }
+  },
+  "source_file": "data\\dfg_hierarchy.json"
 }
-
