@@ -408,7 +408,7 @@ def _default_model_kwargs() -> Dict:
         if allowed_labels:
             num_classes = len(allowed_labels)
         else:
-            num_classes = len(level2)
+        num_classes = len(level2)
     elif allowed_labels:
         num_classes = len(allowed_labels)
 
