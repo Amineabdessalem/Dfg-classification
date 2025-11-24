@@ -1,26 +1,79 @@
 {
-  "model": "SciBERT (allenai/scibert_scivocab_uncased)",
-  "task": "3-class DFG classification",
-  "classes": ["4.41 Systems Engineering", "4.42 Electrical Engineering", "4.43 Computer Science"],
-  "dataset": {
-    "total": 191,
-    "train": 152,
-    "val": 19,
-    "test": 20
-  },
-  "training": {
-    "epochs_completed": 1,
-    "batch_size": 2,
-    "learning_rate": 2e-05,
-    "max_length": 128
-  },
-  "results": {
+  "model": "allenai/scibert_scivocab_uncased",
+  "training_history": [
+    {
+      "date": "23/11/2025",
+      "task": "3-class DFG classification",
+      "classes": ["4.41", "4.42", "4.43"],
+      "dataset": {
+        "total": 191,
+        "train": 152,
+        "val": 19,
+        "test": 20
+      },
+      "training": {
+        "epochs_completed": 6,
+        "batch_size": 2,
+        "learning_rate": 2e-05,
+        "max_length": 128
+      },
+      "final_results": {
+        "train_loss": 0.0006,
+        "val_loss": 0.2698,
+        "val_accuracy": 0.9474,
+        "val_f1": 0.9460,
+        "test_accuracy": 0.9000,
+        "test_f1": 0.8958
+      },
+      "best_epoch": {
+        "epoch": 1,
+        "val_f1": 0.9460
+      }
+    },
+    {
+      "date": "24/11/2025",
+      "task": "5-class DFG classification",
+      "classes": ["4.31", "4.32", "4.41", "4.42", "4.43"],
+      "dataset": {
+        "total": 258,
+        "distribution": {
+          "4.31": 55,
+          "4.32": 12,
+          "4.41": 100,
+          "4.42": 46,
+          "4.43": 45
+        },
+        "train": 152,
+        "val": 19,
+        "test": 20
+      },
+      "training": {
+        "epochs_completed": 5,
+        "batch_size": 2,
+        "learning_rate": 2e-05,
+        "max_length": 128
+      },
+      "final_results": {
+        "train_loss": 0.0021,
+        "val_loss": 0.4319,
+        "val_accuracy": 0.8947,
+        "val_f1": 0.8860,
+        "test_loss": 0.5556,
+        "test_accuracy": 0.9000,
+        "test_f1": 0.8958
+      },
+      "best_epoch": {
+        "epoch": 1,
+        "val_f1": 0.9460,
+        "val_loss": 0.0711
+      },
+      "note": "Best performance at epoch 1. Model overfitted after epoch 1."
+    }
+  ],
+  "latest_training": {
+    "date": "24/11/2025",
+    "classes": 5,
     "val_f1": 0.9460,
-    "val_accuracy": 0.9474,
-    "val_loss": 0.2568,
-    "train_loss": 0.8998
-  },
-  "performance": "Excellent - 94.6% F1 score",
-  "date": "2025-11-23"
+    "test_f1": 0.8958
+  }
 }
-
