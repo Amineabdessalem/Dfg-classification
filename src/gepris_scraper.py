@@ -24,6 +24,10 @@ class GEPRISScraper:
     
     # Fachkollegium to Level-2 DFG code mapping
     FACHKOLLEGIUM_MAP = {
+        "431": "4.31",  # Materials Engineering
+        "432": "4.32",  # Materials Science
+        "433": "4.33",  # Thermal Engineering/Process Engineering
+        "434": "4.34",  # Mechanical and Industrial Engineering
         "441": "4.41",  # Systems Engineering
         "442": "4.42",  # Electrical Engineering
         "443": "4.43",  # Computer Science
@@ -65,11 +69,15 @@ class GEPRISScraper:
         
         while len(project_urls) < max_projects:
             # Build listing page URL
+            # Determine fachgebiet from fachkollegium
+            fachgebiet = fachkollegium[:2]  # First 2 digits (43 or 44)
+            
             params = {
                 'context': 'projekt',
-                'fachgebiet': '44',  # Computer Science, Systems and Electrical Engineering
+                'fachgebiet': fachgebiet,
                 'fachkollegium': fachkollegium,
                 'task': 'doKatalog',
+                'findButton': 'historyCall',  # Required to get search results
                 'index': str(index),
                 'hitsPerPage': str(hits_per_page),
                 'nurProjekteMitAB': 'false',
@@ -83,16 +91,20 @@ class GEPRISScraper:
                 
                 soup = BeautifulSoup(response.content, 'html.parser')
                 
-                # Find project links (they typically have projekt context)
+                # Find project links (format: /gepris/projekt/{id})
                 links = soup.find_all('a', href=True)
                 page_projects = []
                 
                 for link in links:
                     href = link.get('href', '')
-                    if 'context=projekt' in href and 'id=' in href:
-                        full_url = urljoin(self.BASE_URL, href)
-                        if full_url not in project_urls and full_url not in page_projects:
-                            page_projects.append(full_url)
+                    # Look for /gepris/projekt/{id} pattern
+                    if href.startswith('/gepris/projekt/') and href.count('/') == 3:
+                        # Extract just the base project URL (without any additional params)
+                        project_id = href.split('/')[-1].split('?')[0]
+                        if project_id.isdigit():  # Make sure it's a valid project ID
+                            full_url = f"https://gepris.dfg.de/gepris/projekt/{project_id}"
+                            if full_url not in project_urls and full_url not in page_projects:
+                                page_projects.append(full_url)
                 
                 if not page_projects:
                     logger.info(f"No more projects found at index {index}")
@@ -111,7 +123,7 @@ class GEPRISScraper:
         
         return project_urls[:max_projects]
     
-    def scrape_project_details(self, project_url: str) -> Optional[Dict]:
+    def scrape_project_details(self, project_url: str, expected_fachkollegium: str = None) -> Optional[Dict]:
         """
         Scrape details from a single project page
         
@@ -127,45 +139,68 @@ class GEPRISScraper:
             
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Extract title (usually in h1 or h2)
+            # Extract title from multiple possible locations
             title = None
-            for tag in ['h1', 'h2']:
-                title_elem = soup.find(tag)
-                if title_elem:
-                    title = title_elem.get_text(strip=True)
-                    break
+            
+            # Try meta title tag first
+            meta_title = soup.find('meta', {'name': 'title'})
+            if meta_title and meta_title.get('content'):
+                title = meta_title.get('content').strip()
+            
+            # Try h1/h2 tags (skip navigation headers)
+            if not title:
+                for tag in soup.find_all(['h1', 'h2', 'h3']):
+                    text = tag.get_text(strip=True)
+                    # Skip navigation/service headers
+                    if text and len(text) > 15 and len(text) < 300:
+                        if 'navigation' not in text.lower() and 'service' not in text.lower():
+                            title = text
+                            break
             
             if not title:
                 logger.warning(f"No title found for {project_url}")
                 return None
             
-            # Extract abstract from content div
+            # Extract abstract from meta description tag (primary source)
             abstract = None
-            content_div = soup.find('div', class_='content')
-            if content_div:
-                # Get all text from paragraphs
-                paragraphs = content_div.find_all('p')
-                if paragraphs:
-                    abstract = ' '.join(p.get_text(strip=True) for p in paragraphs)
-                else:
-                    abstract = content_div.get_text(strip=True)
+            meta_desc = soup.find('meta', {'name': 'description'})
+            if meta_desc and meta_desc.get('content'):
+                abstract = meta_desc.get('content').strip()
+            
+            # Fallback: try to extract from content div
+            if not abstract or len(abstract) < 50:
+                content_div = soup.find('div', class_='content')
+                if content_div:
+                    # Get all text from paragraphs
+                    paragraphs = content_div.find_all('p')
+                    if paragraphs:
+                        abstract = ' '.join(p.get_text(strip=True) for p in paragraphs)
+                    else:
+                        # Get text from div, looking for substantial content
+                        text_blocks = [elem.get_text(strip=True) for elem in content_div.find_all(['div', 'span']) 
+                                      if len(elem.get_text(strip=True)) > 100]
+                        if text_blocks:
+                            abstract = ' '.join(text_blocks)
             
             if not abstract or len(abstract) < 50:
                 logger.warning(f"No substantial abstract found for {project_url}")
                 return None
             
             # Extract Fachkollegium code
-            fachkollegium = None
-            page_text = soup.get_text()
+            fachkollegium = expected_fachkollegium  # Use the expected value if provided
             
-            # Look for "Fachkollegium = XXX" pattern
-            import re
-            fk_match = re.search(r'Fachkollegium\s*[=:]\s*(\d{3})', page_text)
-            if fk_match:
-                fachkollegium = fk_match.group(1)
+            # Try to extract from page if not provided
+            if not fachkollegium:
+                page_text = soup.get_text()
+                
+                # Look for "Fachkollegium = XXX" pattern
+                import re
+                fk_match = re.search(r'Fachkollegium\s*[=:]\s*(\d{3})', page_text)
+                if fk_match:
+                    fachkollegium = fk_match.group(1)
             
             if not fachkollegium or fachkollegium not in self.FACHKOLLEGIUM_MAP:
-                logger.warning(f"No valid Fachkollegium found for {project_url}")
+                logger.warning(f"No valid Fachkollegium found for {project_url} (expected: {expected_fachkollegium})")
                 return None
             
             # Map to DFG Level-2 code
@@ -277,7 +312,8 @@ class GEPRISScraper:
         for i, url in enumerate(project_urls, 1):
             logger.info(f"Scraping project {i}/{len(project_urls)}: {url}")
             
-            project = self.scrape_project_details(url)
+            # Pass the fachkollegium to help extraction
+            project = self.scrape_project_details(url, expected_fachkollegium=fachkollegium)
             if project:
                 projects.append(project)
                 logger.info(f"✓ Successfully scraped project {i} (total: {len(projects)})")
@@ -307,7 +343,7 @@ def main():
         '--fachkollegium',
         type=str,
         required=True,
-        choices=['441', '442', '443'],
+        choices=['431', '432', '433', '434', '441', '442', '443'],
         help='Fachkollegium code to scrape'
     )
     parser.add_argument(
