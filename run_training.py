@@ -1,9 +1,7 @@
 """
 Simple training runner for DFG Classifier
-
-Usage:
-    python run_training.py
 """
+
 import sys
 from pathlib import Path
 
