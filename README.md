@@ -32,7 +32,7 @@ cat logs/training.log
 
 ### Use Model for Prediction
 ```bash
-python src/classify.py --model models/trained_model --input your_document.pdf
+python src/classify.py --paper your_document.pdf --model models/trained_model/best_model.pth
 ```
 
 ## 📁 Project Structure
