@@ -4,8 +4,10 @@
 model:
   name: "allenai/scibert_scivocab_uncased"
   max_sequence_length: 128  # Further reduced for 4GB GPU memory
-  num_classes: 3   # 3-class classification: 4.41, 4.42, 4.43
+  num_classes: 5   # 5-class classification: 4.31, 4.32, 4.41, 4.42, 4.43
   allowed_labels:
+    - "4.31"
+    - "4.32"
     - "4.41"
     - "4.42"
     - "4.43"
